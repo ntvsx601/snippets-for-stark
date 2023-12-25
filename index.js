@@ -47,4 +47,10 @@ app.use((err, req, res, next) => {
     res.status(500).send('Internal Server Error');
 });
 
+app.get('/transaction-history/:address', async (req, res, next) => {
+    const { address } = req.params;
+    // Logic to fetch transaction history for the address
+    res.send(`Transaction history for ${address}`);
+});
+
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
