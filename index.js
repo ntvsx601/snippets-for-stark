@@ -4,6 +4,10 @@ import cors from "cors";
 import { Account, ec, number, Provider } from "starknet";
 import dotenv from 'dotenv';
 
+import transferHandler from './handlers/transferHandler';
+import transactionHistoryHandler from './handlers/transactionHistoryHandler';
+import healthCheckHandler from './handlers/healthCheckHandler';
+
 dotenv.config();
 
 const app = express();
@@ -75,5 +79,11 @@ app.get('/transaction-history/:address', async (req, res, next) => {
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
+
+// Routes (now moved to separate handlers)
+// Modularized Route Handlers
+// app.post('/transfer', validateTransferRequest, transferHandler);
+// app.get('/transaction-history/:address', transactionHistoryHandler);
+// app.get('/health', healthCheckHandler);
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
