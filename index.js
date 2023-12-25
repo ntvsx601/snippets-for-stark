@@ -38,6 +38,16 @@ const validateTransferInput = (req, res, next) => {
     next();
 };
 
+
+// Validation Middleware for Transfer Requests
+const validateTransferRequest = (req, res, next) => {
+    const { senderAddress, recipient, amount } = req.body;
+    if (!senderAddress || !recipient || !amount) {
+        return res.status(400).send('Missing required fields: senderAddress, recipient, amount');
+    }
+    next();
+};
+
 // Routes
 app.post('/transfer', validateTransferInput, async (req, res, next) => {
     // ... existing transfer route ...
