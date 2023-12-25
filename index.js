@@ -9,6 +9,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5001;
 
+
+// Logging Middleware for Request Details
+app.use((req, res, next) => {
+    console.log(`[Log] ${new Date().toISOString()} - ${req.method} request at ${req.url}`);
+    next();
+});
+
+
 // Logging Middleware
 app.use((req, res, next) => {
     console.log(`Incoming request: ${req.method} ${req.url}`);
