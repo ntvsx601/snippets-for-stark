@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { Account, ec, number, Provider } from "starknet";
 import dotenv from 'dotenv';
+import config from './config';
 
 import transferHandler from './handlers/transferHandler';
 import transactionHistoryHandler from './handlers/transactionHistoryHandler';
@@ -11,7 +12,7 @@ import healthCheckHandler from './handlers/healthCheckHandler';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = config.port;
 
 
 // Logging Middleware for Request Details
